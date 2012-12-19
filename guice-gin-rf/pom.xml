@@ -214,70 +214,6 @@
     <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 
     <plugins>
-    
-    <!-- requestfactory-apt runs an annotation processor (APT) to
-           instrument its service interfaces so that
-           RequestFactoryServer can decode client requests. Normally
-           you would just have a dependency on requestfactory-apt
-           with <scope>provided</scope>, but that won't work in
-           eclipse due to m2e bug
-           https://bugs.eclipse.org/bugs/show_bug.cgi?id=335036 -->
-      <plugin>
-        <groupId>org.bsc.maven</groupId>
-        <artifactId>maven-processor-plugin</artifactId>
-        <version>2.0.5</version>
-        <executions>
-          <execution>
-            <id>process</id>
-            <goals>
-              <goal>process</goal>
-            </goals>
-            <phase>generate-sources</phase>
-            <configuration>
-                <processors>                                
-                  <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-                  <processor>com.google.web.bindery.requestfactory.apt.RfValidator</processor>
-                </processors>
-                <outputDirectory>${project.build.directory}/generated-sources/gwt</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>1.2.0.Final</version>
-          </dependency>
-          <dependency>
-            <groupId>com.google.web.bindery</groupId>
-            <artifactId>requestfactory-apt</artifactId>
-            <version>${gwtVersion}</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-      
-      <!-- Google Plugin for Eclipse (GPE) won't see the source
-           generated above by requestfactory-apt unless it is exposed
-           as an additional source dir-->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <id>add-source</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${project.build.directory}/generated-sources/gwt</source>
-              </sources>
-            </configuration>
-          </execution>          
-        </executions>
-      </plugin>
 
       <!-- GWT Maven Plugin -->
       <plugin>
@@ -297,9 +233,9 @@
         <!-- Plugin configuration. There are many available options, see 
           gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
-          <runTarget>example.html</runTarget>
+          <runTarget>sample.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
-          <i18nMessagesBundle>com.example.client.Messages</i18nMessagesBundle>
+          <i18nMessagesBundle>ru.saa.parts.gwt.client.Messages</i18nMessagesBundle>
           <extraJvmArgs>-XX:MaxPermSize=512m -Xmx1024m</extraJvmArgs>
 		  <generateDirectory>${project.build.sourceDirectory}</generateDirectory>
         </configuration>
