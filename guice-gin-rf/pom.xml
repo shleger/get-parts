@@ -332,6 +332,31 @@
           <compilerArgument>-proc:none</compilerArgument>
         </configuration>
       </plugin>
+
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2</version>
+            <executions>
+                <execution>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>exec</goal>
+                    </goals>
+                    <configuration>
+
+                        <executable>java</executable>
+                        <arguments>
+                            <argument>-cp</argument>
+                            <classpath/>
+                            <argument>com.google.web.bindery.requestfactory.apt.ValidationTool</argument>
+                            <argument>${project.build.outputDirectory}</argument>
+                            <argument>ru.saa.parts.gwt.shared.service.MainRequestFactory</argument>
+                        </arguments>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
   </build>
 
