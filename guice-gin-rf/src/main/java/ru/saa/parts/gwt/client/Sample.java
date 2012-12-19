@@ -1,6 +1,8 @@
 package ru.saa.parts.gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import ru.saa.parts.gwt.client.gin.DefGinInjector;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,6 +12,8 @@ import com.google.gwt.core.client.EntryPoint;
  * To change this template use File | Settings | File Templates.
  */
 public class Sample implements EntryPoint {
+    private DefGinInjector injector = GWT.create(DefGinInjector.class);
+
     @Override
     public void onModuleLoad() {
 
