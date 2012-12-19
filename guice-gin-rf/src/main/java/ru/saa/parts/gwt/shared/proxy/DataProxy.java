@@ -3,6 +3,7 @@ package ru.saa.parts.gwt.shared.proxy;
 import com.google.web.bindery.requestfactory.shared.EntityProxy;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import ru.saa.parts.gwt.server.domain.Data;
+import ru.saa.parts.gwt.server.domain.EntityLocator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +13,7 @@ import ru.saa.parts.gwt.server.domain.Data;
  * To change this template use File | Settings | File Templates.
  */
 
-@ProxyFor (value = Data.class)
+@ProxyFor (value = Data.class,locator = EntityLocator.class)
 public interface DataProxy extends EntityProxy {
 
     String getName();
