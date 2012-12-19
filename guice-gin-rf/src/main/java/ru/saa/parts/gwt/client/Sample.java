@@ -18,22 +18,22 @@ import ru.saa.parts.gwt.shared.service.MainRequestFactory;
  * To change this template use File | Settings | File Templates.
  */
 public class Sample implements EntryPoint {
-//    public final  DefGinInjector injector = GWT.create(DefGinInjector.class);
+    public final  DefGinInjector injector = GWT.create(DefGinInjector.class);
 
     @Override
     public void onModuleLoad() {
 
-//        MainRequestFactory rf = injector.getMainRequestFactory();
+        MainRequestFactory rf = injector.getMainRequestFactory();
 
-        MainRequestFactory  rf = GWT.create(MainRequestFactory.class);
-        rf.initialize(new SimpleEventBus());
+//        MainRequestFactory  rf = GWT.create(MainRequestFactory.class);
+//        rf.initialize(new SimpleEventBus());
 
        final  FieldLabel label = new FieldLabel();
        final  FieldLabel label2 = new FieldLabel();
 
         label.setText("ReqFact: " + rf);
 
-        rf.dataContext().getData().fire(new Receiver<DataProxy>() {
+        rf.dataRequestContext().getData().fire(new Receiver<DataProxy>() {
             @Override
             public void onSuccess(DataProxy dataProxy) {
                 label2.setText("fetch" + dataProxy.getName() + "  ver: " + dataProxy.getVersion());
