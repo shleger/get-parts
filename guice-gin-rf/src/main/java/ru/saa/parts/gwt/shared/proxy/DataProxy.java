@@ -2,9 +2,7 @@ package ru.saa.parts.gwt.shared.proxy;
 
 import com.google.web.bindery.requestfactory.shared.EntityProxy;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
-import ru.saa.parts.gwt.server.dao.DataDao;
 import ru.saa.parts.gwt.server.domain.Data;
-import ru.saa.parts.gwt.shared.service.EntityServiceLocator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,5 +15,19 @@ import ru.saa.parts.gwt.shared.service.EntityServiceLocator;
 @ProxyFor (value = Data.class)
 public interface DataProxy extends EntityProxy {
 
-    Data getData();
+    String getName();
+
+    void setName(String name);
+
+    String getDescr();
+
+    void setDescr(String descr);
+
+    Long getVersion();
+
+    void setVersion(Long version);
+
+    Long getId();
+
+    void setId(Long id);
 }

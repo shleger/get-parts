@@ -14,6 +14,6 @@ import ru.saa.parts.gwt.shared.service.EntityServiceLocator;
 public class InjRequestFactoryModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(EntityServiceLocator.class);
+//        bind(EntityServiceLocator.class);
     }
 }
