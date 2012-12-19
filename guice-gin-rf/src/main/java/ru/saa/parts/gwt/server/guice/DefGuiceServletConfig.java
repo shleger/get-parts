@@ -1,7 +1,14 @@
 package ru.saa.parts.gwt.server.guice;
 
+import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
+import com.google.inject.servlet.ServletModule;
+import com.google.web.bindery.requestfactory.server.RequestFactoryServlet;
+
+import javax.inject.Singleton;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +22,6 @@ import com.google.inject.servlet.GuiceServletContextListener;
 public class DefGuiceServletConfig extends GuiceServletContextListener {
     @Override
     protected Injector getInjector() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return Guice.createInjector(new MainServletModule());
     }
 }
