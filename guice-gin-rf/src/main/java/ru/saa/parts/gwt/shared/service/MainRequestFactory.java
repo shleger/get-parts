@@ -1,6 +1,8 @@
 package ru.saa.parts.gwt.shared.service;
 
-import com.google.web.bindery.requestfactory.shared.RequestFactory;
+import com.google.web.bindery.requestfactory.shared.*;
+import ru.saa.parts.gwt.server.dao.DataDao;
+import ru.saa.parts.gwt.shared.proxy.DataProxy;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,5 +12,15 @@ import com.google.web.bindery.requestfactory.shared.RequestFactory;
  * To change this template use File | Settings | File Templates.
  */
 public interface MainRequestFactory extends RequestFactory {
+
+    @Service(value = DataDao.class, locator = EntityServiceLocator.class )
+    public  interface DataContext extends RequestContext{
+
+        Request<DataProxy> getData();
+
+    }
+
+
+    DataContext dataContext();
 
 }

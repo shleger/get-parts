@@ -14,8 +14,7 @@ import ru.saa.parts.gwt.shared.service.EntityServiceLocator;
  * To change this template use File | Settings | File Templates.
  */
 
-//TODO ????????????
-//@Service (value = DataDao.class, locator = EntityServiceLocator.class )
+@ProxyFor (value = Data.class)
 public interface DataProxy extends EntityProxy {
 
     Data getData();
