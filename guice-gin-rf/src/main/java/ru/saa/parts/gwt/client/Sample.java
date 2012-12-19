@@ -2,6 +2,8 @@ package ru.saa.parts.gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import ru.saa.parts.gwt.client.gin.DefGinInjector;
 
 /**
@@ -16,6 +18,14 @@ public class Sample implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
+
+
+
+        FieldLabel label = new FieldLabel();
+
+        label.setText("jjjjjj");
+
+        RootPanel.get().add(label);
 
     }
 }
