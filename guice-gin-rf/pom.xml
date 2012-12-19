@@ -52,14 +52,14 @@
     <dependency>
       <groupId>com.google.web.bindery</groupId>
       <artifactId>requestfactory-server</artifactId>
-      <version>2.4.0</version>
+      <version>${gwtVersion}</version>
     </dependency>
   
   	<!-- GWT servlet  RPC -->
   	<dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
-      <version>2.4.0</version>
+      <version>${gwtVersion}</version>
     </dependency>
       
     <!-- RequestFactory will use JSR 303 javax.validation if you let it -->
@@ -283,7 +283,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <version>2.4.0</version>
+        <version>${gwtVersion}</version>
         <executions>
           <execution>
             <goals>
@@ -333,57 +333,6 @@
         </configuration>
       </plugin>
     </plugins>
-    <pluginManagement>
-    	<plugins>
-    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-    		<plugin>
-    			<groupId>org.eclipse.m2e</groupId>
-    			<artifactId>lifecycle-mapping</artifactId>
-    			<version>1.0.0</version>
-    			<configuration>
-    				<lifecycleMappingMetadata>
-    					<pluginExecutions>
-    						<pluginExecution>
-    							<pluginExecutionFilter>
-    								<groupId>org.codehaus.mojo</groupId>
-    								<artifactId>
-    									gwt-maven-plugin
-    								</artifactId>
-    								<versionRange>
-    									[2.4.0,)
-    								</versionRange>
-    								<goals>
-    									<goal>generateAsync</goal>
-    									<goal>i18n</goal>
-    								</goals>
-    							</pluginExecutionFilter>
-    							<action>
-    								<ignore></ignore>
-    							</action>
-    						</pluginExecution>
-    						<pluginExecution>
-    							<pluginExecutionFilter>
-    								<groupId>org.bsc.maven</groupId>
-    								<artifactId>
-    									maven-processor-plugin
-    								</artifactId>
-    								<versionRange>
-    									[2.0.5,)
-    								</versionRange>
-    								<goals>
-    									<goal>process</goal>
-    								</goals>
-    							</pluginExecutionFilter>
-    							<action>
-    								<ignore></ignore>
-    							</action>
-    						</pluginExecution>
-    					</pluginExecutions>
-    				</lifecycleMappingMetadata>
-    			</configuration>
-    		</plugin>
-    	</plugins>
-    </pluginManagement>
   </build>
 
 </project>
