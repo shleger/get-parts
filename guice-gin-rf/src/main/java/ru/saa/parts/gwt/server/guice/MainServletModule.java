@@ -3,6 +3,7 @@ package ru.saa.parts.gwt.server.guice;
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import com.google.inject.servlet.ServletModule;
 import com.google.web.bindery.requestfactory.server.RequestFactoryServlet;
+import ru.saa.parts.gwt.server.reqfact.InjRequestFactoryModule;
 
 import javax.inject.Singleton;
 
@@ -23,5 +24,10 @@ public class MainServletModule extends ServletModule {
         //Enable remote log
         install(new RemoteLoggingModule());
         serve("/sample/remoteLog").with(RemoteLoggingServiceImpl.class);
+
+
+        install(new InjRequestFactoryModule());
+
+
     }
 }

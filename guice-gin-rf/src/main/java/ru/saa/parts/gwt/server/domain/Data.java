@@ -2,6 +2,7 @@ package ru.saa.parts.gwt.server.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +13,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Data {
+public class Data implements Serializable{
 
     private String name;
     private String descr;
