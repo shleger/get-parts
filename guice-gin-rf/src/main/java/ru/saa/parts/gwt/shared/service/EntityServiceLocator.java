@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.web.bindery.requestfactory.shared.Locator;
 import com.google.web.bindery.requestfactory.shared.ServiceLocator;
+import ru.saa.parts.gwt.server.dao.DataDao;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,15 +15,25 @@ import com.google.web.bindery.requestfactory.shared.ServiceLocator;
  */
 public class EntityServiceLocator implements ServiceLocator {
 
-    private final Injector injector;
-
-    @Inject
-    public EntityServiceLocator(Injector injector) {
-        this.injector = injector;
-    }
 
     @Override
-    public Object getInstance(Class<?> aClass) {
-        return injector.getInstance(aClass);
+    public Object getInstance(Class<?> clazz) {
+        return new DataDao();
     }
+
+
+
+
+    //todo fix err for this
+//    private final Injector injector;
+//
+//    @Inject
+//    public EntityServiceLocator(Injector injector) {
+//        this.injector = injector;
+//    }
+//
+//    @Override
+//    public Object getInstance(Class<?> aClass) {
+//        return injector.getInstance(aClass);
+//    }
 }
