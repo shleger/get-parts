@@ -95,4 +95,8 @@ public class Employee {
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
+
+    public static Employee findEmployee(Long id){
+        return  new Employee();
+    }
 }
