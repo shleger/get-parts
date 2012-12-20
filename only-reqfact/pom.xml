@@ -18,9 +18,62 @@
     <!-- GWT needs at least java 1.5 -->
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+      <persistence-api.version>1.0</persistence-api.version>
+      <slf4f.version>1.6.1</slf4f.version>
+      <validation-api.version>1.0.0.GA</validation-api.version>
   </properties>
 
   <dependencies>
+
+      <dependency>
+          <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>${validation-api.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>${validation-api.version}</version>
+          <classifier>sources</classifier>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>javax.persistence</groupId>
+          <artifactId>persistence-api</artifactId>
+          <version>${persistence-api.version}</version>
+      </dependency>
+
+      <!-- Required by Hibernate validator because slf4j-log4j is
+     optional in the hibernate-validator POM  -->
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>${slf4f.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>${slf4f.version}</version>
+      </dependency>
+
+      <!-- RequestFactory -->
+
+      <dependency>
+          <groupId>com.google.web.bindery</groupId>
+          <artifactId>requestfactory-server</artifactId>
+          <version>${gwtVersion}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.google.web.bindery</groupId>
+          <artifactId>requestfactory-apt</artifactId>
+          <version>${gwtVersion}</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <!-- RequestFactory will use JSR 303 javax.validation if you let it -->
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
