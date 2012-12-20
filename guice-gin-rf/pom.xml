@@ -47,13 +47,20 @@
       <scope>provided</scope> 
     </dependency>
     
-    <!-- RequestFactory server -->
+    <!-- RequestFactory -->
     
     <dependency>
       <groupId>com.google.web.bindery</groupId>
       <artifactId>requestfactory-server</artifactId>
       <version>${gwtVersion}</version>
     </dependency>
+
+      <dependency>
+          <groupId>com.google.web.bindery</groupId>
+          <artifactId>requestfactory-apt</artifactId>
+          <version>${gwtVersion}</version>
+          <scope>provided</scope>
+      </dependency>
   
   	<!-- GWT servlet  RPC -->
   	<dependency>
@@ -162,18 +169,18 @@
 	</dependency>
 	
 	<!-- hibernate metamodel -->
-	<dependency>
-	  <groupId>org.hibernate</groupId>
-	  <artifactId>hibernate-jpamodelgen</artifactId>
-	  <version>1.2.0.Final</version>
-	</dependency>
+	<!--<dependency>-->
+	  <!--<groupId>org.hibernate</groupId>-->
+	  <!--<artifactId>hibernate-jpamodelgen</artifactId>-->
+	  <!--<version>1.2.0.Final</version>-->
+	<!--</dependency>-->
 	
 	<!-- postgresql jdbc connector -->
-	<dependency>
-	  <groupId>postgresql</groupId>
-	  <artifactId>postgresql</artifactId>
-	  <version>9.1-901-1.jdbc4</version>
-	</dependency>
+	<!--<dependency>-->
+	  <!--<groupId>postgresql</groupId>-->
+	  <!--<artifactId>postgresql</artifactId>-->
+	  <!--<version>9.1-901-1.jdbc4</version>-->
+	<!--</dependency>-->
 	
 	<!-- MVP component -->
    <dependency>
