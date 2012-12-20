@@ -87,4 +87,12 @@ public class Employee {
     public void setSupervisor(Employee supervisor) {
         this.supervisor = supervisor;
     }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 }
