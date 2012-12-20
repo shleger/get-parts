@@ -1,7 +1,9 @@
 package ru.saa.part.onlyrf.client;
 
+import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
+import com.google.web.bindery.requestfactory.shared.Receiver;
 import ru.saa.part.onlyrf.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -18,6 +20,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import ru.saa.part.onlyrf.shared.proxy.EmployeeProxy;
 import ru.saa.part.onlyrf.shared.services.ExpensesRequestFactory;
 
 /**
@@ -52,6 +55,23 @@ public class SampleRf implements EntryPoint {
         requestFactory.initialize(eventBus);
 
         System.out.println("SampleRf.onModuleLoad: " + requestFactory );
+
+        final Button reqFacButton = new Button("sssss");
+
+        reqFacButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                requestFactory.employeeRequest().findEmployee(1L).fire(new Receiver<EmployeeProxy>() {
+                    @Override
+                    public void onSuccess(EmployeeProxy employeeProxy) {
+                        Window.alert("Empl:" + employeeProxy.getUserName());
+                    }
+                });
+            }
+        });
+
+        RootPanel.get().add(reqFacButton);
+
 
 
         final Button sendButton = new Button(messages.sendButton());
