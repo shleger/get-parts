@@ -3,8 +3,9 @@ package ru.saa.part.onlyrf.shared.proxy;
 import com.google.web.bindery.requestfactory.shared.EntityProxy;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import ru.saa.part.onlyrf.server.domain.Employee;
+import ru.saa.part.onlyrf.server.locator.EmployeeLocator;
 
-@ProxyFor(Employee.class)
+@ProxyFor(value = Employee.class,locator = EmployeeLocator.class)
 public interface EmployeeProxy extends EntityProxy {
 
     String getDepartment();
