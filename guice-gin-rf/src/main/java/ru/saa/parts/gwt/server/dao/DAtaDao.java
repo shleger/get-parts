@@ -2,6 +2,7 @@ package ru.saa.parts.gwt.server.dao;
 
 import ru.saa.parts.gwt.server.domain.Data;
 
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -17,9 +18,9 @@ public class DataDao {
 
         Data d = new Data();
         d.setId(12L);
-        d.setName("Data name");
+        d.setName("Data name " + new Date());
         d.setDescr("Description");
-        d.setVersion(new Random().nextLong());
+        d.setVersion(1L);
 
         return d;
     }

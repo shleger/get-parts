@@ -2,10 +2,14 @@ package ru.saa.parts.gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.web.bindery.requestfactory.shared.Receiver;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
@@ -34,6 +38,7 @@ public class Sample implements EntryPoint {
 
        final  FieldLabel label = new FieldLabel();
        final  FieldLabel label2 = new FieldLabel();
+        label2.setWidth("400px");
 
         label.setText("ReqFact: " + rf);
 
@@ -47,7 +52,7 @@ public class Sample implements EntryPoint {
 
         TextButton textButton = new TextButton();
 
-        textButton.setText("press");
+        textButton.setText("gxtTextButton");
 
         textButton.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
@@ -56,16 +61,39 @@ public class Sample implements EntryPoint {
                 rf.dataRequestContext().getData().fire(new Receiver<DataProxy>() {
                     @Override
                     public void onSuccess(DataProxy dataProxy) {
-                        Window.alert("textButton.addSelectHandler" + "fetch" + dataProxy.getName() + "  ver: " + dataProxy.getVersion());
+                        Window.alert("textButton.addSelectHandler" + "fetch: " + dataProxy.getName() + "  ver: " + dataProxy.getVersion());
                     }
                 });
             }
         })   ;
 
+        Button simpleButton = new Button();
+        simpleButton.setText("simpleButton");
 
-        RootPanel.get().add(label);
-        RootPanel.get().add(label2);
-        RootPanel.get().add(textButton);
+        simpleButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                rf.dataRequestContext().getData().fire(new Receiver<DataProxy>() {
+                    @Override
+                    public void onSuccess(DataProxy dataProxy) {
+                        Window.alert("fetch: " + dataProxy.getName() + "  ver: " + dataProxy.getVersion());
+                    }
+                });
+
+            }
+        });
+
+        VerticalPanel panel = new VerticalPanel();
+        panel.setWidth("400px");
+        panel.setBorderWidth(1);
+
+        panel.add(label);
+        panel.add(label2);
+        panel.add(textButton);
+        panel.add(simpleButton);
+
+        RootPanel.get().add(panel);
+
 
 
     }
