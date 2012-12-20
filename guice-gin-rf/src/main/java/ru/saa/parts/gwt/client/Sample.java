@@ -2,9 +2,13 @@ package ru.saa.parts.gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import ru.saa.parts.gwt.client.gin.DefGinInjector;
 import ru.saa.parts.gwt.shared.proxy.DataProxy;
@@ -23,7 +27,7 @@ public class Sample implements EntryPoint {
     @Override
     public void onModuleLoad() {
 
-        MainRequestFactory rf = injector.getMainRequestFactory();
+       final MainRequestFactory rf = injector.getMainRequestFactory();
 
 //        MainRequestFactory  rf = GWT.create(MainRequestFactory.class);
 //        rf.initialize(new SimpleEventBus());
@@ -41,10 +45,28 @@ public class Sample implements EntryPoint {
         });
 
 
+        TextButton textButton = new TextButton();
+
+        textButton.setText("press");
+
+        textButton.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+
+                rf.dataRequestContext().getData().fire(new Receiver<DataProxy>() {
+                    @Override
+                    public void onSuccess(DataProxy dataProxy) {
+                        Window.alert("textButton.addSelectHandler" + "fetch" + dataProxy.getName() + "  ver: " + dataProxy.getVersion());
+                    }
+                });
+            }
+        })   ;
 
 
         RootPanel.get().add(label);
         RootPanel.get().add(label2);
+        RootPanel.get().add(textButton);
+
 
     }
 }
