@@ -64,7 +64,7 @@ public class SampleRf implements EntryPoint {
                 requestFactory.employeeRequest().findEmployee(1L).fire(new Receiver<EmployeeProxy>() {
                     @Override
                     public void onSuccess(EmployeeProxy employeeProxy) {
-                        Window.alert("Empl:" + employeeProxy.getUserName());
+                        Window.alert("Empl:" + employeeProxy.getUserName() + ", id=" + employeeProxy.getId());
                     }
                 });
             }

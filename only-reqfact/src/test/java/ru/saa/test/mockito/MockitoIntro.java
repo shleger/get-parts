@@ -53,7 +53,7 @@ public class MockitoIntro {
         EmployeeProxy found = captor.getValue();
 
 
-        assertEquals(employeeId, found);
+        assertEquals(employeeId, found.getId());
 
 
     }
