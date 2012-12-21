@@ -22,6 +22,7 @@ import ru.saa.part.onlyrf.shared.services.ExpensesRequestFactory;
 public class MockitoIntro {
 
     private static final String URL_TO_GWT_SERVLET = "http://localhost:8888/gwtRequest";
+    //Is server have to be running ??
 
 
     @Test
