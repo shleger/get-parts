@@ -1,13 +1,12 @@
-package ru.saa.parts.gwt.client.presenters;
+package ru.saa.parts.gwt.client.presenters.home;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
-import com.gwtplatform.mvp.client.proxy.Place;
-import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.client.proxy.Proxy;
-import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
+import com.gwtplatform.mvp.client.annotations.NameToken;
+import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.gwtplatform.mvp.client.proxy.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,12 +27,13 @@ public class HomePresenter extends Presenter<HomePresenter.HomeView, HomePresent
     }
 
 
-    interface HomeView extends View {
+    public interface HomeView extends View {
 
     }
 
-    interface HomeProxy extends Proxy<HomePresenter>, Place {
-
+    @ProxyCodeSplit
+    @NameToken("home")
+    public interface HomeProxy extends ProxyPlace<HomePresenter> {
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.gwtplatform.mvp.client.DelayedBindRegistry;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
@@ -30,6 +31,10 @@ public class Sample implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
+
+
+
+
 
        final MainRequestFactory rf = injector.getMainRequestFactory();
 
@@ -92,9 +97,11 @@ public class Sample implements EntryPoint {
         panel.add(textButton);
         panel.add(simpleButton);
 
-        RootPanel.get().add(panel);
+        RootPanel.get("button1").add(panel);
 
 
+        DelayedBindRegistry.bind(injector);
+        injector.getPlaceManager().revealCurrentPlace();
 
     }
 }

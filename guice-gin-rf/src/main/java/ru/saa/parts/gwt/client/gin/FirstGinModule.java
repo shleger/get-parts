@@ -19,7 +19,7 @@ import javax.inject.Singleton;
 public class FirstGinModule extends AbstractGinModule {
     @Override
     protected void configure() {
-        bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
+//        bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         bind(MainRequestFactory.class).in(Singleton.class);
     }
 

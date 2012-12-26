@@ -6,7 +6,7 @@ import com.google.gwt.inject.client.Ginjector;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import ru.saa.parts.gwt.client.Messages;
-import ru.saa.parts.gwt.client.presenters.HomePresenter;
+import ru.saa.parts.gwt.client.presenters.home.HomePresenter;
 import ru.saa.parts.gwt.shared.service.MainRequestFactory;
 
 /**
@@ -16,7 +16,7 @@ import ru.saa.parts.gwt.shared.service.MainRequestFactory;
  * Time: 16:42
  * To change this template use File | Settings | File Templates.
  */
-@GinModules(FirstGinModule.class)
+@GinModules({FirstGinModule.class, GinGWTPModule.class})
 public interface DefGinInjector extends Ginjector {
 
 
