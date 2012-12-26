@@ -1,8 +1,12 @@
 package ru.saa.parts.gwt.client.gin;
 
+import com.google.gwt.inject.client.AsyncProvider;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import ru.saa.parts.gwt.client.Messages;
+import ru.saa.parts.gwt.client.presenters.HomePresenter;
 import ru.saa.parts.gwt.shared.service.MainRequestFactory;
 
 /**
@@ -18,4 +22,9 @@ public interface DefGinInjector extends Ginjector {
 
     EventBus getEventBus();
     MainRequestFactory getMainRequestFactory();
+
+    //GWT Platform
+    PlaceManager getPlaceManager();
+    Messages getMessages();
+    AsyncProvider<HomePresenter> getHomePresenter();
 }
