@@ -32,7 +32,7 @@ public class HomePageView extends ViewImpl
         final Label errorLabel = new Label();
 
         // We can add style names to widgets
-        sendButton.addStyleName("sendButton");
+//        sendButton.addStyleName("sendButton");
 
         // Add the nameField and sendButton to the RootPanel
         // Use RootPanel.get() to get the entire body element
