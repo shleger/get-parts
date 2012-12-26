@@ -6,6 +6,7 @@ import com.google.gwt.inject.client.Ginjector;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import ru.saa.parts.gwt.client.Messages;
+import ru.saa.parts.gwt.client.presenters.about.AboutPresenter;
 import ru.saa.parts.gwt.client.presenters.home.HomePresenter;
 import ru.saa.parts.gwt.shared.service.MainRequestFactory;
 
@@ -27,4 +28,5 @@ public interface DefGinInjector extends Ginjector {
     PlaceManager getPlaceManager();
     Messages getMessages();
     AsyncProvider<HomePresenter> getHomePresenter();
+    AsyncProvider<AboutPresenter> getAboutPresenter();
 }

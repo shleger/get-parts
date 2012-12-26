@@ -29,8 +29,9 @@ public class GinGWTPModule extends AbstractPresenterModule {
         install(new DefaultModule(MyPlaceManager.class));
 
 
+        //don't forget setup AsyncProvider<?Presenter> get?Presenter();
         bindPresenter(HomePresenter.class, HomePresenter.HomeView.class, HomePageView.class, HomePresenter.HomeProxy.class);
-//        bindPresenter(AboutPresenter.class, AboutPresenter.AboutView.class, AboutPageView.class, AboutPresenter.AboutProxy.class);
+        bindPresenter(AboutPresenter.class, AboutPresenter.AboutView.class, AboutPageView.class, AboutPresenter.AboutProxy.class);
 
     }
 }

@@ -1,5 +1,8 @@
 package ru.saa.parts.gwt.client.presenters.home;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
@@ -9,6 +12,7 @@ public class HomePageView extends ViewImpl
 
     private static String html =
             "<h1>GWTP Web Application</h1>\n" +
+                    "<a href=#about>aboutPresenter</a>  \n"+
                     "<table align=\"center\">\n" +
                     "  <tr>\n" +
                     "    <td colspan=\"2\" style=\"font-weight:bold;\">Please enter your name:</td>\n" +
@@ -29,6 +33,13 @@ public class HomePageView extends ViewImpl
         final Button sendButton = new Button("Send");
         final TextBox nameField = new TextBox();
         nameField.setText("GWT User");
+
+        sendButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                Window.alert("Home.User: " + nameField.getValue());
+            }
+        }) ;
         final Label errorLabel = new Label();
 
         // We can add style names to widgets
