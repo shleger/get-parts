@@ -9,7 +9,7 @@ import com.gwtplatform.dispatch.shared.UnsecuredActionImpl;
  * Time: 04:24 AM
  * To change this template use File | Settings | File Templates.
  */
-public class SendTextRequest  extends UnsecuredActionImpl<SendTextResponce>{
+public class SendTextRequest  extends UnsecuredActionImpl<SendTextResponse>{
 
     private String req;
 

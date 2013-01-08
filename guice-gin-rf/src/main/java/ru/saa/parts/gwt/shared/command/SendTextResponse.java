@@ -9,7 +9,7 @@ import com.gwtplatform.dispatch.shared.Result;
  * Time: 04:25 AM
  * To change this template use File | Settings | File Templates.
  */
-public class SendTextResponce implements Result {
+public class SendTextResponse implements Result {
 
     private String res;
 

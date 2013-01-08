@@ -6,7 +6,7 @@ import com.gwtplatform.dispatch.server.ExecutionContext;
 import com.gwtplatform.dispatch.server.actionhandler.ActionHandler;
 import com.gwtplatform.dispatch.shared.ActionException;
 import ru.saa.parts.gwt.shared.command.SendTextRequest;
-import ru.saa.parts.gwt.shared.command.SendTextResponce;
+import ru.saa.parts.gwt.shared.command.SendTextResponse;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * Time: 04:23 AM
  * To change this template use File | Settings | File Templates.
  */
-public class SendTextHandler implements ActionHandler<SendTextRequest, SendTextResponce> {
+public class SendTextHandler implements ActionHandler<SendTextRequest, SendTextResponse> {
 
     private Provider<HttpServletRequest> requestProvider;
     private ServletContext servletContext;
@@ -30,13 +30,13 @@ public class SendTextHandler implements ActionHandler<SendTextRequest, SendTextR
     }
 
     @Override
-    public SendTextResponce execute(SendTextRequest action, ExecutionContext context) throws ActionException {
+    public SendTextResponse execute(SendTextRequest action, ExecutionContext context) throws ActionException {
 
         String req = action.getReq();
 
-        SendTextResponce sendTextResponce = new SendTextResponce();
-        sendTextResponce.setRes(req);
-        return sendTextResponce;
+        SendTextResponse sendTextResponse = new SendTextResponse();
+        sendTextResponse.setRes(req);
+        return sendTextResponse;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class SendTextHandler implements ActionHandler<SendTextRequest, SendTextR
     }
 
     @Override
-    public void undo(SendTextRequest sendTextRequest, SendTextResponce sendTextResponce, ExecutionContext executionContext) throws ActionException {
+    public void undo(SendTextRequest sendTextRequest, SendTextResponse sendTextResponse, ExecutionContext executionContext) throws ActionException {
         // not undoable
     }
 }
