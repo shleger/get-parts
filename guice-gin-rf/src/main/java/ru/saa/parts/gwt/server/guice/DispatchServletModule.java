@@ -1,5 +1,6 @@
 package ru.saa.parts.gwt.server.guice;
 
+import com.google.inject.servlet.ServletModule;
 import com.gwtplatform.dispatch.server.guice.DispatchServiceImpl;
 import com.gwtplatform.dispatch.shared.ActionImpl;
 
@@ -10,7 +11,7 @@ import com.gwtplatform.dispatch.shared.ActionImpl;
  * Time: 04:14 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DispatchServletModule extends MainServletModule {
+public class DispatchServletModule extends ServletModule {
 
     @Override
     protected void configureServlets() {

@@ -16,6 +16,8 @@ import com.gwtplatform.mvp.client.ViewImpl;
  */
 public class AboutPageView extends ViewImpl implements AboutPresenter.AboutView {
 
+    final TextBox nameField = new TextBox();
+
     private static String html =
             "<h1>ABOUT PRESENTER FOR  GWTP Web Application</h1>\n" +
                     "<a href=# >homePresenter</a>  \n"+
@@ -37,7 +39,7 @@ public class AboutPageView extends ViewImpl implements AboutPresenter.AboutView 
     @Inject
     public AboutPageView() {
         final Button sendButton = new Button("Send");
-        final TextBox nameField = new TextBox();
+
         nameField.setText("GWT User");
 
         sendButton.addClickHandler(new ClickHandler() {
@@ -64,4 +66,14 @@ public class AboutPageView extends ViewImpl implements AboutPresenter.AboutView 
         return panel;
     }
 
+    @Override
+    public void setRequest(String req) {
+        nameField.setText(req);
+    }
+
+    @Override
+    public void setResponse(String resp) {
+        nameField.setText(resp);
+
+    }
 }
