@@ -22,6 +22,6 @@ import java.util.Map;
 public class DefGuiceServletConfig extends GuiceServletContextListener {
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(new MainServletModule());
+        return Guice.createInjector(new MainServletModule(),new ServerModule(),new DispatchServletModule());
     }
 }
