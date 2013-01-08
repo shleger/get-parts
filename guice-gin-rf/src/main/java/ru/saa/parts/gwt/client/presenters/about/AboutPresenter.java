@@ -69,10 +69,14 @@ public class AboutPresenter extends Presenter<AboutPresenter.AboutView, AboutPre
             @Override
             public void onFailure(Throwable throwable) {
 
+                getView().setResponse("Error: " +throwable.getMessage());
+
             }
 
             @Override
             public void onSuccess(SendTextResponse sendTextResponse) {
+
+                getView().setResponse(sendTextResponse.getRes());
 
             }
         };
