@@ -1,4 +1,4 @@
-package ru.saa.part.onlyrf.shared;
+package ru.saa.part.springrf.shared;
 
 /**
  * <p>

@@ -1,10 +1,10 @@
-package ru.saa.part.onlyrf.client;
+package ru.saa.part.springrf.client;
 
 import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.google.web.bindery.requestfactory.shared.Receiver;
-import ru.saa.part.onlyrf.shared.FieldVerifier;
+import ru.saa.part.springrf.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -20,8 +20,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import ru.saa.part.onlyrf.shared.proxy.EmployeeProxy;
-import ru.saa.part.onlyrf.shared.services.ExpensesRequestFactory;
+import ru.saa.part.springrf.shared.proxy.EmployeeProxy;
+import ru.saa.part.springrf.shared.services.ExpensesRequestFactory;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.

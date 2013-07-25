@@ -1,8 +1,8 @@
-package ru.saa.part.onlyrf.shared.proxy;
+package ru.saa.part.springrf.shared.proxy;
 
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
-import ru.saa.part.onlyrf.server.domain.Address;
+import ru.saa.part.springrf.server.domain.Address;
 
 @ProxyFor(Address.class)
 public interface AddressProxy extends ValueProxy {

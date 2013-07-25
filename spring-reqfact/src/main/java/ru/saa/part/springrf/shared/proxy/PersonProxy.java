@@ -1,8 +1,8 @@
-package ru.saa.part.onlyrf.shared.proxy;
+package ru.saa.part.springrf.shared.proxy;
 
 import com.google.web.bindery.requestfactory.shared.EntityProxy;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
-import ru.saa.part.onlyrf.server.domain.Person;
+import ru.saa.part.springrf.server.domain.Person;
 
 @ProxyFor(Person.class)
 public interface PersonProxy extends EntityProxy {

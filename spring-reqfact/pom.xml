@@ -113,69 +113,6 @@
       </dependency>
 
 
-      <!-- Spring framework distribution -->
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-core</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-beans</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-tx</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-web</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-orm</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-config</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-core</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-web</artifactId>
-          <version>${springframeworkVersion}</version>
-      </dependency>
-
-      <dependency>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcprov-jdk15on</artifactId>
-          <version>1.49</version>
-      </dependency>
-
-
-      <dependency>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcmail-jdk15</artifactId>
-          <version>1.46</version>
-      </dependency>
-
 
   </dependencies>
 
@@ -189,7 +126,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <version>2.5.0</version>
+        <version>${gwtVersion}</version>
         <executions>
           <execution>
             <goals>
@@ -205,7 +142,7 @@
         <configuration>
           <runTarget>SampleRf.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
-          <i18nMessagesBundle>ru.saa.part.onlyrf.client.Messages</i18nMessagesBundle>
+          <i18nMessagesBundle>ru.saa.part.springrf.client.Messages</i18nMessagesBundle>
         </configuration>
       </plugin>
 

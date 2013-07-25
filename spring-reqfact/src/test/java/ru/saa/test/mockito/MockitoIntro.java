@@ -5,12 +5,11 @@ import static org.junit.Assert.*;
 
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.google.web.bindery.requestfactory.shared.Receiver;
-import com.google.web.bindery.requestfactory.shared.ServerFailure;
 import com.google.web.bindery.requestfactory.vm.RequestFactorySource;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import ru.saa.part.onlyrf.shared.proxy.EmployeeProxy;
-import ru.saa.part.onlyrf.shared.services.ExpensesRequestFactory;
+import ru.saa.part.springrf.shared.proxy.EmployeeProxy;
+import ru.saa.part.springrf.shared.services.ExpensesRequestFactory;
 
 /**
  * Created with IntelliJ IDEA.

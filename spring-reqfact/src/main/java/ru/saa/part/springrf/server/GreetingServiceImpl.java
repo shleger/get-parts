@@ -1,7 +1,7 @@
-package ru.saa.part.onlyrf.server;
+package ru.saa.part.springrf.server;
 
-import ru.saa.part.onlyrf.client.GreetingService;
-import ru.saa.part.onlyrf.shared.FieldVerifier;
+import ru.saa.part.springrf.client.GreetingService;
+import ru.saa.part.springrf.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**

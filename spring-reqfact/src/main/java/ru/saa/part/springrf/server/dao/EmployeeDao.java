@@ -1,6 +1,6 @@
-package ru.saa.part.onlyrf.server.dao;
+package ru.saa.part.springrf.server.dao;
 
-import ru.saa.part.onlyrf.server.domain.Employee;
+import ru.saa.part.springrf.server.domain.Employee;
 
 import java.util.ArrayList;
 import java.util.List;

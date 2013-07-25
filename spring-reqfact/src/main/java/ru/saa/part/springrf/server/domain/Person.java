@@ -1,4 +1,4 @@
-package ru.saa.part.onlyrf.server.domain;
+package ru.saa.part.springrf.server.domain;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;

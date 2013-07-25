@@ -1,7 +1,7 @@
-package ru.saa.part.onlyrf.server.locator;
+package ru.saa.part.springrf.server.locator;
 
 import com.google.web.bindery.requestfactory.shared.Locator;
-import ru.saa.part.onlyrf.server.domain.Employee;
+import ru.saa.part.springrf.server.domain.Employee;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,6 +1,6 @@
-package ru.saa.part.onlyrf.client;
+package ru.saa.part.springrf.client;
 
-import ru.saa.part.onlyrf.shared.FieldVerifier;
+import ru.saa.part.springrf.shared.FieldVerifier;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -22,7 +22,7 @@ public class GwtTestSampleRf extends GWTTestCase {
    * Must refer to a valid module that sources this class.
    */
   public String getModuleName() {
-    return "ru.saa.part.onlyrf.SampleRfJUnit";
+    return "ru.saa.part.springrf.SampleRfJUnit";
   }
 
   /**

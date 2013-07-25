@@ -1,9 +1,9 @@
-package ru.saa.part.onlyrf.shared.proxy;
+package ru.saa.part.springrf.shared.proxy;
 
 import com.google.web.bindery.requestfactory.shared.EntityProxy;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
-import ru.saa.part.onlyrf.server.domain.Employee;
-import ru.saa.part.onlyrf.server.locator.EmployeeLocator;
+import ru.saa.part.springrf.server.domain.Employee;
+import ru.saa.part.springrf.server.locator.EmployeeLocator;
 
 @ProxyFor(value = Employee.class,locator = EmployeeLocator.class)
 public interface EmployeeProxy extends EntityProxy {

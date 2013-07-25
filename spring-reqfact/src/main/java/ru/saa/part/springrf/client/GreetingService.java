@@ -1,4 +1,4 @@
-package ru.saa.part.onlyrf.client;
+package ru.saa.part.springrf.client;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;

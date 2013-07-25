@@ -1,11 +1,10 @@
-package ru.saa.part.onlyrf.shared.services;
+package ru.saa.part.springrf.shared.services;
 
 
 import com.google.web.bindery.requestfactory.shared.*;
-import ru.saa.part.onlyrf.server.dao.EmployeeDao;
-import ru.saa.part.onlyrf.server.domain.Employee;
-import ru.saa.part.onlyrf.server.locator.MyServiceLocator;
-import ru.saa.part.onlyrf.shared.proxy.EmployeeProxy;
+import ru.saa.part.springrf.server.dao.EmployeeDao;
+import ru.saa.part.springrf.server.locator.MyServiceLocator;
+import ru.saa.part.springrf.shared.proxy.EmployeeProxy;
 
 import java.util.List;
 

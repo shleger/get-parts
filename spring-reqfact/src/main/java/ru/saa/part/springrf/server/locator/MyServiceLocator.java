@@ -1,4 +1,4 @@
-package ru.saa.part.onlyrf.server.locator;
+package ru.saa.part.springrf.server.locator;
 
 import com.google.web.bindery.requestfactory.shared.ServiceLocator;
 

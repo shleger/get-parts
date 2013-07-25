@@ -1,6 +1,5 @@
-package ru.saa.part.onlyrf.server.domain;
+package ru.saa.part.springrf.server.domain;
 
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 
@@ -12,7 +11,6 @@ public class Employee {
 
     private String department;
 
-    @NotNull
     private String displayName;
 
     private String password;
