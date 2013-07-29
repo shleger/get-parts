@@ -32,6 +32,13 @@
   <dependencies>
 
 
+      <!-- Databases Config -->
+      <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+          <version>1.3.168</version>
+      </dependency>
+
       <!-- Spring framework distribution -->
       <dependency>
           <groupId>org.springframework</groupId>
@@ -146,6 +153,29 @@
       <version>4.7</version>
       <scope>test</scope>
     </dependency>
+
+      <!-- Hibernate -->
+      <dependency>
+          <groupId>org.hibernate.javax.persistence</groupId>
+          <artifactId>hibernate-jpa-2.0-api</artifactId>
+          <version>1.0.1.Final</version>
+      </dependency>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>4.1.4.Final</version>
+      </dependency>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-validator</artifactId>
+          <version>4.2.0.Final</version>
+      </dependency>
+
+      <dependency>
+          <groupId>c3p0</groupId>
+          <artifactId>c3p0</artifactId>
+          <version>0.9.1.2</version>
+      </dependency>
 
       <dependency>
           <groupId>org.hibernate</groupId>

@@ -1,6 +1,7 @@
 package ru.saa.part.springrf.server.locator.spring;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,8 +9,14 @@ import com.google.web.bindery.requestfactory.shared.Locator;
 
 public class GWTSpringEntityLocator<T extends HasVersionAndId> extends
         Locator<T, Long> {
-    @Autowired
+
+
     EntityManager entityManager;
+
+    @PersistenceContext
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
     public T create(Class<? extends T> clazz) {
