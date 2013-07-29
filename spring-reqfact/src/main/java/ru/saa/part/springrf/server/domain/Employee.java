@@ -1,10 +1,12 @@
 package ru.saa.part.springrf.server.domain;
 
 
+import ru.saa.part.springrf.server.locator.spring.HasVersionAndId;
+
 import javax.persistence.*;
 
 @Entity
-public class Employee {
+public class Employee implements HasVersionAndId{
 
 //    @Size(min = 3, max = 30)    //todo enable validation
     private String userName;
@@ -25,7 +27,7 @@ public class Employee {
 
     @Version
     @Column(name = "version")
-    private Integer version;
+    private Long version;
 
     @Transient
     private Employee supervisor;
@@ -70,11 +72,11 @@ public class Employee {
         this.id = id;
     }
 
-    public Integer getVersion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 

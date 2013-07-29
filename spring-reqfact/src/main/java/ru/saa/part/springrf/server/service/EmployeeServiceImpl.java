@@ -29,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         Employee em3 = new Employee();
         em3.setUserName("name3");
-        em3.setVersion(3);
+        em3.setVersion(3L);
         em3.setId(3L);
 
         return em3;
