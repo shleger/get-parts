@@ -18,6 +18,8 @@
 
   <!-- Other module inherits                                      -->
 
+    <inherits name="com.smartgwt.SmartGwt"/>
+
   <!-- Specify the app entry point class.                         -->
   <entry-point class='ru.saa.part.springrf.client.SampleRf' />
 
