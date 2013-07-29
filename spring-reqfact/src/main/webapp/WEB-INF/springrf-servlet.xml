@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <bean id="urlMapping"
+          class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <value>
+                /gwtspring=gwtRequestFactoryController
+            </value>
+        </property>
+    </bean>
+    <bean id="gwtSpringServiceLayerDecorator"
+          class="ru.saa.part.springrf.server.locator.spring.GWTSpringServiceLayerDecorator" />
+    <bean id="defaultExceptionHandler"
+          class="com.google.web.bindery.requestfactory.server.DefaultExceptionHandler" />
+    <!-- RequestFactoryServlet bean is scoped as singleton. Injecting custom
+        SpringServiceLayerDecorator. -->
+    <bean id="requestFactoryServlet"
+          class="com.google.web.bindery.requestfactory.server.RequestFactoryServlet"
+          scope="singleton">
+        <constructor-arg ref="defaultExceptionHandler" />
+        <constructor-arg ref="gwtSpringServiceLayerDecorator" />
+    </bean>
+    <bean id="gwtSpringEntityLocator"
+          class="ru.saa.part.springrf.server.locator.spring.GWTSpringEntityLocator" />
+    <bean id="gwtSpringServiceLocator"
+          class="ru.saa.part.springrf.server.locator.spring.GWTSpringServiceLocator" />
+    <!-- IMPORTANT NOTE: CustomServletWrappingController is a hacked version
+        of ServletWrappingController. The servlet class defined here will not be
+        used. Please see CustomServletWrappingController for more information. -->
+    <bean id="gwtRequestFactoryController"
+          class="ru.saa.part.springrf.server.locator.spring.CustomServletWrappingController">
+        <property name="servletClass">
+            <value>com.google.web.bindery.requestfactory.server.RequestFactoryServlet
+            </value>
+        </property>
+        <property name="servletName">
+            <value>gwtspring</value>
+        </property>
+    </bean>
+</beans>

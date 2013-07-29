@@ -94,7 +94,18 @@ public class Employee {
         this.displayName = displayName;
     }
 
-//    public static Employee findEmployee(Long id){
-//        return  new Employee();
-//    }
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "userName='" + userName + '\'' +
+                ", department='" + department + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", password='" + password + '\'' +
+                ", supervisorKey=" + supervisorKey +
+                ", id=" + id +
+                ", version=" + version +
+                ", supervisor=" + supervisor +
+                '}';
+    }
+
 }

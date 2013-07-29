@@ -2,42 +2,19 @@ package ru.saa.part.springrf.shared.services;
 
 
 import com.google.web.bindery.requestfactory.shared.*;
-import ru.saa.part.springrf.server.dao.EmployeeDao;
-import ru.saa.part.springrf.server.locator.MyServiceLocator;
+import ru.saa.part.springrf.server.locator.spring.GWTSpringServiceLocator;
+import ru.saa.part.springrf.server.service.EmployeeService;
 import ru.saa.part.springrf.shared.proxy.EmployeeProxy;
-
-import java.util.List;
 
 public interface ExpensesRequestFactory extends RequestFactory {
 
-    @Service(value = EmployeeDao.class, locator = MyServiceLocator.class)
-    public interface EmployeeRequest extends RequestContext {
-
-//        Request<Long> countEmployees();
-//
-//        Request<Long> countEmployeesByDepartment(
-//                String department);
-
-        Request<List<EmployeeProxy>> findAllEmployees();
-
-        Request<EmployeeProxy> findEmployee(Long id);
-
-//        Request<List<EmployeeProxy>> findEmployeeEntries(int firstResult,
-//                                                         int maxResults);
-//
-//        Request<List<EmployeeProxy>> findEmployeeEntriesByDepartment(
-//                String department, int firstResult, int maxResults);
-
-        InstanceRequest<EmployeeProxy, Void> persist();
-
-        InstanceRequest<EmployeeProxy, Void> remove();
-
-    }
-
     EmployeeRequest employeeRequest();
 
-//    ExpenseRequest expenseRequest();
-//
-//    ReportRequest reportRequest();
+
+    @Service(value = EmployeeService.class, locator = GWTSpringServiceLocator.class)
+    public interface EmployeeRequest extends RequestContext {
+        Request<EmployeeProxy> findEmployee(long id);
+        Request<Void> persist(EmployeeProxy employeeProxy);
+    }
 
 }

@@ -6,21 +6,26 @@
 <web-app>
 
   <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>ru.saa.part.springrf.server.GreetingServiceImpl</servlet-class>
-  </servlet>
+    <!-- Spring context -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
+    <!-- SpringGwt remote service servlet -->
     <servlet>
-        <servlet-name>requestFactoryServlet</servlet-name>
-        <servlet-class>com.google.web.bindery.requestfactory.server.RequestFactoryServlet</servlet-class>
-        <init-param>
-            <param-name>symbolMapsDirectory</param-name>
-            <!-- You'll need to compile with -extras and move the symbolMaps directory
-                to this location if you want stack trace deobfuscation to work -->
-            <param-value>WEB-INF/classes/symbolMaps/</param-value>
-        </init-param>
+        <servlet-name>springrf</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>springrf</servlet-name>
+        <url-pattern>/gwtspring/*</url-pattern>
+    </servlet-mapping>
+
+
 
     <servlet>
         <servlet-name>jUnitHostImpl</servlet-name>
@@ -31,15 +36,6 @@
         <url-pattern>/SampleRf/junithost/*</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>requestFactoryServlet</servlet-name>
-        <url-pattern>/gwtRequest</url-pattern>
-    </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/SampleRf/greet</url-pattern>
-  </servlet-mapping>
 
   <!-- Default page to serve -->
   <welcome-file-list>
