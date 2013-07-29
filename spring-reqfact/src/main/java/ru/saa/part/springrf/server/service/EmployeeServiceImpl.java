@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * $Revision:  $
@@ -31,12 +32,16 @@ public class EmployeeServiceImpl implements EmployeeService{
     public void destroy() {
     }
 
+    @Transactional
     public Employee findEmployee(long employeeId) {
 
-//        entityManager.find()
+        List<Employee> l = entityManager.createQuery("from Employee").getResultList();
+
+
 
         Employee em3 = new Employee();
-        em3.setUserName("name3 [stub]");
+
+        em3.setUserName("name3 [stub]" + l);
         em3.setVersion(3L);
         em3.setId(3L);
 
@@ -44,10 +49,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     }
 
-    @Transactional(propagation= Propagation.REQUIRED, rollbackFor=Exception.class)
+    @Transactional
     public void persist(Employee employeeDTO) {
-        System.out.println("SAVED ENTITY: " + employeeDTO);
         entityManager.persist(employeeDTO);
+        System.out.println("SAVED ENTITY: " + employeeDTO);
     }
 
 }

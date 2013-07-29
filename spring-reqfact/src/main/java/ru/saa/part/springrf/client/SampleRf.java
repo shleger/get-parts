@@ -94,8 +94,8 @@ public class SampleRf implements EntryPoint {
 
                 ExpensesRequestFactory.EmployeeRequest request = requestFactory.employeeRequest();
                 EmployeeProxy newEmployee = request.create(EmployeeProxy.class);
-                newEmployee.setDisplayName(dsDisplayName.getDisplayField());
-                newEmployee.setDepartment(dsDepartment.getDisplayField());
+                newEmployee.setDisplayName("sss");
+                newEmployee.setDepartment("ddd");
 
                 Request<Void> createReq = request.persist(newEmployee);
 
