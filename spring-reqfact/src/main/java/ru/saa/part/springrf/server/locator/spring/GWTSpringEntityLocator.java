@@ -11,12 +11,9 @@ public class GWTSpringEntityLocator<T extends HasVersionAndId> extends
         Locator<T, Long> {
 
 
+    @PersistenceContext
     EntityManager entityManager;
 
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     @Override
     public T create(Class<? extends T> clazz) {
