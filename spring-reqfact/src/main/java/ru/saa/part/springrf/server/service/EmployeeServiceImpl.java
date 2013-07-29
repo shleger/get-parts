@@ -7,6 +7,8 @@ import ru.saa.part.springrf.server.domain.Employee;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * $Revision:  $
@@ -15,6 +17,10 @@ import javax.annotation.PreDestroy;
  */
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService{
+
+
+    @PersistenceContext
+    EntityManager entityManager;
 
 
     @PostConstruct
@@ -27,8 +33,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     public Employee findEmployee(long employeeId) {
 
+//        entityManager.find()
+
         Employee em3 = new Employee();
-        em3.setUserName("name3");
+        em3.setUserName("name3 [stub]");
         em3.setVersion(3L);
         em3.setId(3L);
 
@@ -38,7 +46,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Transactional(propagation= Propagation.REQUIRED, rollbackFor=Exception.class)
     public void persist(Employee employeeDTO) {
-        System.out.println("SAVED ENTITY" + employeeDTO);
+        System.out.println("SAVED ENTITY: " + employeeDTO);
+        entityManager.persist(employeeDTO);
     }
 
 }

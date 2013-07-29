@@ -4,6 +4,7 @@ import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.google.web.bindery.requestfactory.shared.Request;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.fields.DataSourceTextField;
 import com.smartgwt.client.widgets.IButton;
@@ -43,7 +44,6 @@ public class SampleRf implements EntryPoint {
     /**
      * Create a remote service proxy to talk to the server-side Greeting service.
      */
-    private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
     private final Messages messages = GWT.create(Messages.class);
 
@@ -61,12 +61,12 @@ public class SampleRf implements EntryPoint {
 
         System.out.println("SampleRf.onModuleLoad: " + requestFactory );
 
-        DataSource ds = new DataSource();
+        final DataSource ds = new DataSource();
         ds.setID("employee");
 
         DataSourceTextField dsName = new DataSourceTextField("userName");
-        DataSourceTextField dsDepartment = new DataSourceTextField("department");
-        DataSourceTextField dsDisplayName = new DataSourceTextField("displayName");
+        final DataSourceTextField dsDepartment = new DataSourceTextField("department");
+        final DataSourceTextField dsDisplayName = new DataSourceTextField("displayName");
         DataSourceTextField dsPassword = new DataSourceTextField("password");
 
         ds.setFields(dsName,dsDepartment,dsDisplayName,dsName,dsPassword);
@@ -86,6 +86,31 @@ public class SampleRf implements EntryPoint {
         });
 
 
+        final IButton saveButton = new IButton("saveEmployee");
+
+        saveButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+
+                ExpensesRequestFactory.EmployeeRequest request = requestFactory.employeeRequest();
+                EmployeeProxy newEmployee = request.create(EmployeeProxy.class);
+                newEmployee.setDisplayName(dsDisplayName.getDisplayField());
+                newEmployee.setDepartment(dsDepartment.getDisplayField());
+
+                Request<Void> createReq = request.persist(newEmployee);
+
+                createReq.fire(new Receiver<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Window.alert("Employee:" + "saved");
+
+                    }
+                });
+            }
+        });
+
+
+
         final DynamicForm form = new DynamicForm();
         form.setWidth(300);
         form.setDataSource(ds);
@@ -94,6 +119,7 @@ public class SampleRf implements EntryPoint {
         vLayout.setMembersMargin(10);
         vLayout.addMember(form);
         vLayout.addMember(reqFacButton);
+        vLayout.addMember(saveButton);
 
         RootPanel.get().add(vLayout);
 
