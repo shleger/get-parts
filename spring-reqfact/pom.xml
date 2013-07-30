@@ -33,7 +33,6 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <persistence-api.version>1.0</persistence-api.version>
         <slf4f.version>1.6.1</slf4f.version>
         <validation-api.version>1.0.0.GA</validation-api.version>
     </properties>
@@ -115,11 +114,6 @@
             <version>${validation-api.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>${persistence-api.version}</version>
-        </dependency>
 
         <!-- Required by Hibernate validator because slf4j-log4j is
        optional in the hibernate-validator POM  -->
