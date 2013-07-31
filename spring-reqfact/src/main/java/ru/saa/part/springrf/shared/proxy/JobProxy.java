@@ -12,4 +12,9 @@ public interface JobProxy extends EntityProxy {
     String getLastName();
     AddressProxy getAddress();
     EmployeeProxy getEmployee();
+
+    void setFirstName(String firstName);
+    void setLastName( String lastName);
+    void setAddress(AddressProxy address);
+
 }

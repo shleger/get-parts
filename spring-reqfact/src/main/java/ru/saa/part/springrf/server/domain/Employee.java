@@ -4,6 +4,7 @@ package ru.saa.part.springrf.server.domain;
 import ru.saa.part.springrf.server.locator.spring.HasVersionAndId;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,8 +18,8 @@ public class Employee implements HasVersionAndId{
 
     private String password;
 
-    @OneToMany(mappedBy = "employee")
-    private List<Job> jobs;
+    @OneToMany(cascade =CascadeType.ALL, mappedBy = "employee",fetch =  FetchType.LAZY)
+    private List<Job> jobs = new ArrayList<Job>();
 
     @JoinColumn
     private Long supervisorKey;

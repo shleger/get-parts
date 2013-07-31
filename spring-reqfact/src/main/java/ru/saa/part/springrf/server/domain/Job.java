@@ -18,12 +18,14 @@ public class Job implements HasVersionAndId {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Version
     private Long version;
     private String firstName;
     private String  lastName;
 
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false)    // TODO:  NULL not allowed for column "EMPLOYEE_ID"; SQL statement  !!!
     private Employee employee;
 
     @Embedded

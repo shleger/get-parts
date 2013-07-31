@@ -33,4 +33,7 @@ public interface EmployeeProxy extends EntityProxy {
     void setSupervisor(EmployeeProxy supervisor);
 
     void setUserName(String userName);
+
+     void setJobs(List<JobProxy> jobs);
+
 }

@@ -28,6 +28,7 @@ import com.sencha.gxt.widget.core.client.grid.filters.GridFilters;
 import com.sencha.gxt.widget.core.client.grid.filters.StringFilter;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 import ru.saa.part.springrf.shared.proxy.EmployeeProxy;
+import ru.saa.part.springrf.shared.proxy.JobProxy;
 import ru.saa.part.springrf.shared.services.EmployeeRequest;
 import ru.saa.part.springrf.shared.services.ExpensesRequestFactory;
 
@@ -121,6 +122,13 @@ public class SampleRf implements EntryPoint, IsWidget {
                 newEmployee.setDepartment("depart" + +random.nextInt(RND_MAX));
                 newEmployee.setUserName("usr name" + random.nextInt(RND_MAX));
                 newEmployee.setPassword("usr pass" + random.nextInt(RND_MAX));
+
+                List<JobProxy> jobs = new ArrayList<JobProxy>();
+                JobProxy job = request.create(JobProxy.class);
+                job.setFirstName("first Job" + random.nextInt(RND_MAX));
+                job.setLastName("last Job" + random.nextInt(RND_MAX));
+                jobs.add(job);
+                newEmployee.setJobs(jobs);
 
 
                 Request<Void> createReq = request.persist(newEmployee);
