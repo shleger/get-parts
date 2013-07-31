@@ -174,7 +174,7 @@ public class SampleRf implements EntryPoint, IsWidget {
         loader.addLoadHandler(new LoadResultListStoreBinding<FilterPagingLoadConfig, EmployeeProxy, PagingLoadResult<EmployeeProxy>>(
                 store));
 
-        final PagingToolBar toolBar = new PagingToolBar(50);
+        final PagingToolBar toolBar = new PagingToolBar(10);
         toolBar.getElement().getStyle().setProperty("borderBottom", "none");
         toolBar.bind(loader);
 
@@ -222,7 +222,7 @@ public class SampleRf implements EntryPoint, IsWidget {
         filters.addFilter(new StringFilter<EmployeeProxy>(props.userName()));
 
         FramedPanel cp = new FramedPanel();
-        cp.setHeadingText("RequestFactory Grid Example");
+        cp.setHeadingText("RequestFactory Таблица");
         cp.setPixelSize(500, 400);
 //        cp.addStyleName("margin-10");
 
