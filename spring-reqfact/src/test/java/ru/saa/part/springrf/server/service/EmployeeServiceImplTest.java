@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ru.saa.part.springrf.server.domain.Employee;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,8 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class EmployeeServiceImplTest {
 
     @Autowired
-    @Qualifier("employeeService")
-    EmployeeServiceImpl employeeService;
+    EmployeeService employeeService;
 
     @Test
     public void testFindEmployee() throws Exception {
@@ -30,6 +30,13 @@ public class EmployeeServiceImplTest {
 
     @Test
     public void testPersist() throws Exception {
+
+        Employee emp = new Employee();
+        emp.setDepartment("testDep");
+        emp.setDisplayName("testDispName");
+
+
+        employeeService.persist(emp);
 
     }
 
