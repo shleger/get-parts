@@ -12,14 +12,7 @@
     <version>1.0-SNAPSHOT</version>
     <name>GWT Maven Archetype</name>
 
-    <repositories>
-        <repository>
 
-            <id>smartgwt</id>
-            <url>http://www.smartclient.com/maven2</url>
-
-        </repository>
-    </repositories>
 
     <properties>
         <!-- Convenience property to set the GWT version -->
@@ -41,9 +34,9 @@
 
 
         <dependency>
-            <groupId>com.smartgwt</groupId>
-            <artifactId>smartgwt</artifactId>
-            <version>4.0</version>
+            <groupId>com.sencha.gxt</groupId>
+            <artifactId>gxt</artifactId>
+            <version>3.0.1</version>
         </dependency>
 
         <!-- Databases Config -->

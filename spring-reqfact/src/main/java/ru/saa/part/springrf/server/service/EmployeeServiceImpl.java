@@ -1,7 +1,8 @@
 package ru.saa.part.springrf.server.service;
 
+import com.sencha.gxt.data.shared.SortInfoBean;
+import com.sencha.gxt.data.shared.loader.FilterConfigBean;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.saa.part.springrf.server.domain.Employee;
 
@@ -17,7 +18,7 @@ import java.util.List;
  * $Date: 25.07.13 17:08  $
  */
 @Service("employeeService")
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
 
     @PersistenceContext
@@ -38,7 +39,6 @@ public class EmployeeServiceImpl implements EmployeeService{
         List<Employee> l = entityManager.createQuery("from Employee").getResultList();
 
 
-
         Employee em3 = new Employee();
 
         em3.setUserName("name3 [stub]" + l);
@@ -53,6 +53,12 @@ public class EmployeeServiceImpl implements EmployeeService{
     public void persist(Employee employeeDTO) {
         entityManager.persist(employeeDTO);
         System.out.println("SAVED ENTITY: " + employeeDTO);
+    }
+
+    @Override
+    public EmployeePagingBean getEmployees(int offset, int limit, List<SortInfoBean> sortInfo, List<FilterConfigBean> filterConfig) {
+        List<Employee> l = entityManager.createQuery("from Employee").getResultList();
+        return new EmployeePagingBean(l, l.size(), 0);
     }
 
 }
