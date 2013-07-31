@@ -25,7 +25,7 @@
     </bean>
 
 
-    <bean id="employeeService" class="ru.saa.part.springrf.server.service.EmployeeServiceImpl"/>
+    <!--<bean id="employeeService" class="ru.saa.part.springrf.server.service.EmployeeServiceImpl"/>-->
 
 
     <bean id="gwtSpringServiceLayerDecorator"
