@@ -48,6 +48,7 @@ public class EmployeeServiceImplTest {
 
         List<Job> jobs = new ArrayList<Job>();
         Job job =  new Job();
+        job.setEmployee(emp);
         job.setFirstName("first Job" + random.nextInt(RND_MAX));
         job.setLastName("last Job" + random.nextInt(RND_MAX));
         jobs.add(job);

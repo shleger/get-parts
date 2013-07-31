@@ -125,9 +125,14 @@ public class SampleRf implements EntryPoint, IsWidget {
 
                 List<JobProxy> jobs = new ArrayList<JobProxy>();
                 JobProxy job = request.create(JobProxy.class);
+
+                job.setEmployee(newEmployee);
+
                 job.setFirstName("first Job" + random.nextInt(RND_MAX));
                 job.setLastName("last Job" + random.nextInt(RND_MAX));
                 jobs.add(job);
+
+
                 newEmployee.setJobs(jobs);
 
 
