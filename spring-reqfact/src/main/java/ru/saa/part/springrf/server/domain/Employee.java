@@ -4,11 +4,11 @@ package ru.saa.part.springrf.server.domain;
 import ru.saa.part.springrf.server.locator.spring.HasVersionAndId;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Employee implements HasVersionAndId{
 
-//    @Size(min = 3, max = 30)    //todo enable validation
     private String userName;
 
     private String department;
@@ -16,6 +16,9 @@ public class Employee implements HasVersionAndId{
     private String displayName;
 
     private String password;
+
+    @OneToMany(mappedBy = "employee")
+    private List<Job> jobs;
 
     @JoinColumn
     private Long supervisorKey;
@@ -94,6 +97,15 @@ public class Employee implements HasVersionAndId{
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
     }
 
     @Override

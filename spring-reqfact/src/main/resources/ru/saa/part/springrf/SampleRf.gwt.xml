@@ -20,7 +20,11 @@
 
     <inherits name='com.sencha.gxt.ui.GXT'/>
 
-  <!-- Specify the app entry point class.                         -->
+    <extend-property name="locale" values="ru_RU"/>
+    <set-property name="locale" value="ru_RU" />
+
+
+    <!-- Specify the app entry point class.                         -->
   <entry-point class='ru.saa.part.springrf.client.SampleRf' />
 
   <!-- Specify the paths for translatable code                    -->

@@ -5,6 +5,8 @@ import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import ru.saa.part.springrf.server.domain.Employee;
 import ru.saa.part.springrf.server.locator.spring.GWTSpringEntityLocator;
 
+import java.util.List;
+
 @ProxyFor(value = Employee.class, locator = GWTSpringEntityLocator.class)
 public interface EmployeeProxy extends EntityProxy {
 
@@ -19,6 +21,8 @@ public interface EmployeeProxy extends EntityProxy {
     EmployeeProxy getSupervisor();
 
     String getUserName();
+
+    List<JobProxy> getJobs();
 
     void setDepartment(String department);
 

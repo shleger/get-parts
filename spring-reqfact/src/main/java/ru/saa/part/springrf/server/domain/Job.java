@@ -1,8 +1,8 @@
 package ru.saa.part.springrf.server.domain;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import ru.saa.part.springrf.server.locator.spring.HasVersionAndId;
+
+import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,11 +12,20 @@ import javax.persistence.Id;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Person {
+public class Job implements HasVersionAndId {
+
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer version = 0;
-    private String firstName, lastName;
+    private Long version;
+    private String firstName;
+    private String  lastName;
+
+
+    @ManyToOne(optional = false)
+    private Employee employee;
+
     @Embedded
     private Address address;
 
@@ -28,11 +37,11 @@ public class Person {
         this.id = id;
     }
 
-    public Integer getVersion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
@@ -58,5 +67,14 @@ public class Person {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

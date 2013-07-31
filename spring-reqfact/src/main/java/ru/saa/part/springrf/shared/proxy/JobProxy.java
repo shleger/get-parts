@@ -2,13 +2,14 @@ package ru.saa.part.springrf.shared.proxy;
 
 import com.google.web.bindery.requestfactory.shared.EntityProxy;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
-import ru.saa.part.springrf.server.domain.Person;
+import ru.saa.part.springrf.server.domain.Job;
 
-@ProxyFor(Person.class)
-public interface PersonProxy extends EntityProxy {
+@ProxyFor(Job.class)
+public interface JobProxy extends EntityProxy {
     Long getId();
-    Integer getVersion();
+    Long getVersion();
     String getFirstName();
     String getLastName();
     AddressProxy getAddress();
+    EmployeeProxy getEmployee();
 }
