@@ -5,6 +5,7 @@ import com.sencha.gxt.data.shared.loader.FilterConfigBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.saa.part.springrf.server.domain.Employee;
+import ru.saa.part.springrf.server.domain.Job;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -49,6 +50,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return em3;
 
+    }
+
+    @Override
+    public Job findJob(long employeeId) {
+        return entityManager.find(Job.class,employeeId);
     }
 
     @Transactional
