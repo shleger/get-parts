@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -57,7 +58,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeePagingBean getEmployees(int offset, int limit, List<SortInfoBean> sortInfo, List<FilterConfigBean> filterConfig) {
-        List<Employee> l = entityManager.createQuery("from Employee").getResultList();
+        Query q = entityManager.createQuery("from Employee");
+        q.setMaxResults(limit);
+        q.setFirstResult(offset);
+
+        List<Employee> l = q.getResultList();
         return new EmployeePagingBean(l, l.size(), 0);
     }
 

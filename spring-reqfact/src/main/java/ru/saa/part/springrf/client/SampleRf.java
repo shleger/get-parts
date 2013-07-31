@@ -3,12 +3,14 @@ package ru.saa.part.springrf.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.google.web.bindery.requestfactory.shared.Request;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
@@ -16,7 +18,9 @@ import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.data.shared.SortInfo;
 import com.sencha.gxt.data.shared.loader.*;
 import com.sencha.gxt.widget.core.client.FramedPanel;
+import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
@@ -29,6 +33,7 @@ import ru.saa.part.springrf.shared.services.ExpensesRequestFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -91,28 +96,47 @@ public class SampleRf implements EntryPoint, IsWidget {
 //                    }
 //                });
 
-        //--saveButton
-
-//        ExpensesRequestFactory.EmployeeRequest request = requestFactory.employeeRequest();
-//        EmployeeProxy newEmployee = request.create(EmployeeProxy.class);
-//        newEmployee.setDisplayName("sss");
-//        newEmployee.setDepartment("ddd");
-//
-//        Request<Void> createReq = request.persist(newEmployee);
-//
-//        createReq.fire(new Receiver<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//                Window.alert("Employee:" + "saved");
-//
-//            }
-//        });
-
 
     }
 
     @Override
     public Widget asWidget() {
+
+        TextButton textButton = new TextButton("addRow");
+
+        textButton.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+
+                //--saveButton
+
+                EmployeeRequest request = requestFactory.employeeRequest();
+                EmployeeProxy newEmployee = request.create(EmployeeProxy.class);
+
+                Random random = new Random();
+                final int RND_MAX = 99;
+
+
+                newEmployee.setDisplayName("display name" + random.nextInt(RND_MAX));
+                newEmployee.setDepartment("depart" + +random.nextInt(RND_MAX));
+                newEmployee.setUserName("usr name" + random.nextInt(RND_MAX));
+                newEmployee.setPassword("usr pass" + random.nextInt(RND_MAX));
+
+
+                Request<Void> createReq = request.persist(newEmployee);
+
+                createReq.fire(new Receiver<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Window.alert("Employee:" + "saved");
+
+                    }
+                });
+
+            }
+        });
+
+
         final EventBus eventBus = new SimpleEventBus();
         requestFactory.initialize(eventBus);
 
@@ -207,6 +231,7 @@ public class SampleRf implements EntryPoint, IsWidget {
         con.add(view, new VerticalLayoutContainer.VerticalLayoutData(1, 1));
         con.add(toolBar, new VerticalLayoutContainer.VerticalLayoutData(1, -1));
         cp.setWidget(con);
+        con.add(textButton);
 
         return cp;
 
