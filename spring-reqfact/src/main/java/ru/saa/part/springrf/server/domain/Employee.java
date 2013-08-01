@@ -123,4 +123,14 @@ public class Employee implements HasVersionAndId{
                 '}';
     }
 
+    /**
+     * suppress exception:
+     * com.google.web.bindery.requestfactory.server.UnexpectedException: Could not find static method with a single parameter of a key type
+     * @param id
+     * @return
+     */
+    public static Employee findEmployee(Long id){
+        return null;
+    }
+
 }

@@ -79,4 +79,14 @@ public class Job implements HasVersionAndId {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
+    /**
+     * suppress exception:
+     * com.google.web.bindery.requestfactory.server.UnexpectedException: Could not find static method with a single parameter of a key type
+     * @param id
+     * @return
+     */
+    public static Job findJob(Long id){
+        return null;
+    }
 }
