@@ -2,7 +2,6 @@ package ru.saa.part.springrf.server.service;
 
 import com.sencha.gxt.data.shared.SortInfoBean;
 import com.sencha.gxt.data.shared.loader.FilterConfigBean;
-import org.hibernate.ejb.criteria.OrderImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.saa.part.springrf.server.domain.Employee;
@@ -15,6 +14,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import javax.persistence.metamodel.EntityType;
 import java.util.List;
 
 /**
@@ -70,20 +70,34 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        EntityType<Employee> Employee_ = entityManager.getMetamodel().entity(Employee.class);
+
 
         CriteriaQuery<Employee> cq = cb.createQuery(Employee.class);
 
         Root<Employee> cFrom = cq.from(Employee.class);
-        CriteriaQuery<Employee> sel = cq.select(cFrom);
 
-        if(sortInfo != null && sortInfo.size() == 1){
-            SortInfoBean sort = sortInfo.get(0);
-            switch (sort.getSortDir()){
-                case ASC:  cq.orderBy(cb.asc(cFrom.get(sort.getSortField())));
+
+
+        for (SortInfoBean sort : sortInfo)
+            switch (sort.getSortDir()) {
+                case ASC:
+                    cq.orderBy(cb.asc(cFrom.get(sort.getSortField())));
                     break;
-                case DESC:  cq.orderBy(cb.desc(cFrom.get(sort.getSortField())));
+                case DESC:
+                    cq.orderBy(cb.desc(cFrom.get(sort.getSortField())));
                     break;
             }
+
+
+
+        for (FilterConfigBean filter : filterConfig){
+
+            Expression<String> literal = cb.upper(cb.literal("*" + filter.getValue() + "*"));
+            Path<String> idPath = cFrom.get( filter.getField() );
+            Predicate predicate = cb.like(idPath, literal);
+
+            cq.where(predicate);
         }
 
 
