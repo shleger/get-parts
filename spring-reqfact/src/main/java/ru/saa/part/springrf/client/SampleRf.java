@@ -3,6 +3,7 @@ package ru.saa.part.springrf.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -20,6 +21,8 @@ import com.sencha.gxt.data.shared.loader.*;
 import com.sencha.gxt.widget.core.client.FramedPanel;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.GridEvent;
+import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
@@ -208,7 +211,7 @@ public class SampleRf implements EntryPoint, IsWidget {
         ColumnModel<EmployeeProxy> cm = new ColumnModel<EmployeeProxy>(l);
 
 
-        Grid<EmployeeProxy> view = new Grid<EmployeeProxy>(store, cm) {
+       final  Grid<EmployeeProxy> view = new Grid<EmployeeProxy>(store, cm) {
             @Override
             protected void onAfterFirstAttach() {
                 super.onAfterFirstAttach();
@@ -223,6 +226,18 @@ public class SampleRf implements EntryPoint, IsWidget {
         view.getView().setForceFit(true);
         view.setLoadMask(true);
         view.setLoader(loader);
+
+//        view.getSelectionModel().addSelectionChangedHandler()
+
+        view.addRowDoubleClickHandler(new RowDoubleClickEvent.RowDoubleClickHandler() {
+            @Override
+            public void onRowDoubleClick(RowDoubleClickEvent e) {
+                List<EmployeeProxy> selectedItems = view.getSelectionModel().getSelection();
+
+                Window.alert("ROW number: " + e.getRowIndex() + " EmployeeProxy getDepartment: " + selectedItems.get(0).getDepartment());
+
+            }
+        });
 
 
         // Create the filters, and hook them to the loader and grid
