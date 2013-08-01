@@ -1,5 +1,8 @@
 package ru.saa.part.springrf.server.service;
 
+import com.sencha.gxt.data.shared.SortInfo;
+import com.sencha.gxt.data.shared.SortInfoBean;
+import com.sencha.gxt.data.shared.loader.FilterConfigBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +66,13 @@ public class EmployeeServiceImplTest {
 
     @Test
     public void testGetEmployees() throws Exception {
+
+        List<SortInfoBean> sorts = new ArrayList<SortInfoBean>();
+        List<FilterConfigBean> filters = new ArrayList<FilterConfigBean>();
+
+        EmployeePagingBean emps = employeeService.getEmployees(0, 10, sorts, filters);
+
+        System.out.println(emps);
 
     }
 }

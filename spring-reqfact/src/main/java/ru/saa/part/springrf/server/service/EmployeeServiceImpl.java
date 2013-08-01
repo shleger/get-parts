@@ -2,6 +2,7 @@ package ru.saa.part.springrf.server.service;
 
 import com.sencha.gxt.data.shared.SortInfoBean;
 import com.sencha.gxt.data.shared.loader.FilterConfigBean;
+import org.hibernate.ejb.criteria.OrderImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.saa.part.springrf.server.domain.Employee;
@@ -13,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 /**
@@ -66,11 +68,29 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeePagingBean getEmployees(int offset, int limit, List<SortInfoBean> sortInfo, List<FilterConfigBean> filterConfig) {
 
-        Query qCount = entityManager.createQuery("select count (*) from Employee ");
 
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+
+        CriteriaQuery<Employee> cq = cb.createQuery(Employee.class);
+
+        Root<Employee> cFrom = cq.from(Employee.class);
+        CriteriaQuery<Employee> sel = cq.select(cFrom);
+
+        if(sortInfo != null && sortInfo.size() == 1){
+            SortInfoBean sort = sortInfo.get(0);
+            switch (sort.getSortDir()){
+                case ASC:  cq.orderBy(cb.asc(cFrom.get(sort.getSortField())));
+                    break;
+                case DESC:  cq.orderBy(cb.desc(cFrom.get(sort.getSortField())));
+                    break;
+            }
+        }
+
+
+        Query qCount = entityManager.createQuery("select count (*) from Employee ");
         Long count = (Long) qCount.getSingleResult();
 
-        TypedQuery<Employee> q = entityManager.createQuery("from Employee", Employee.class);
+        TypedQuery<Employee> q = entityManager.createQuery(cq);
 
         q.setMaxResults(limit);
         q.setFirstResult(offset);
