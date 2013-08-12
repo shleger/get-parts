@@ -18,13 +18,7 @@ public class EmployeeLocator extends Locator<Employee,Long> {
 
     @Override
     public Employee find(Class<? extends Employee> clazz, Long id) {
-
-        Employee em3 = new Employee();
-        em3.setUserName("name3");
-        em3.setVersion(3);
-        em3.setId(3L);
-
-        return em3;       //TODO fill it with true val
+        return null;       //TODO fill it with true val
     }
 
     @Override
