@@ -3,7 +3,6 @@ package ru.saa.part.onlyrf.shared.services;
 
 import com.google.web.bindery.requestfactory.shared.*;
 import ru.saa.part.onlyrf.server.dao.EmployeeDao;
-import ru.saa.part.onlyrf.server.domain.Employee;
 import ru.saa.part.onlyrf.server.locator.MyServiceLocator;
 import ru.saa.part.onlyrf.shared.proxy.EmployeeProxy;
 
@@ -33,9 +32,12 @@ public interface ExpensesRequestFactory extends RequestFactory {
 
         InstanceRequest<EmployeeProxy, Void> remove();
 
+        Request<Void> update(EmployeeProxy  employee) ;
+
     }
 
     EmployeeRequest employeeRequest();
+
 
 //    ExpenseRequest expenseRequest();
 //

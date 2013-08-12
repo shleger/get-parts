@@ -50,27 +50,56 @@ public class SampleRf implements EntryPoint {
     public void onModuleLoad() {
 
 
+        GWT.setUncaughtExceptionHandler( new CustomUncaughtExceptionHandler() );
+
 
         final EventBus eventBus = new SimpleEventBus();
         requestFactory.initialize(eventBus);
 
         System.out.println("SampleRf.onModuleLoad: " + requestFactory );
 
-        final Button reqFacButton = new Button("sssss");
+        final Button readFacButton = new Button("Read");
+        final Button updateFacButton = new Button("Save");
 
-        reqFacButton.addClickHandler(new ClickHandler() {
+        final TextBox textBox = new TextBox();
+
+
+        final EmployeeProxy[] empProxy = new EmployeeProxy[1];
+
+        readFacButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent clickEvent) {
                 requestFactory.employeeRequest().findEmployee(1L).fire(new Receiver<EmployeeProxy>() {
                     @Override
                     public void onSuccess(EmployeeProxy employeeProxy) {
                         Window.alert("Empl:" + employeeProxy.getUserName() + ", id=" + employeeProxy.getId());
+                        textBox.setValue(employeeProxy.getUserName());
+                        empProxy[0] = employeeProxy;
                     }
                 });
             }
         });
 
-        RootPanel.get().add(reqFacButton);
+        updateFacButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                System.out.println("click update");
+                ExpensesRequestFactory.EmployeeRequest r = requestFactory.employeeRequest();
+
+                EmployeeProxy saveProxy = r.edit(empProxy[0]);
+
+                saveProxy.setUserName(textBox.getText());
+
+                r.update(saveProxy).fire();
+            }
+        });
+
+
+        RootPanel.get().add(readFacButton);
+
+        RootPanel.get().add(textBox);
+        RootPanel.get().add(updateFacButton);
+
 
 
 

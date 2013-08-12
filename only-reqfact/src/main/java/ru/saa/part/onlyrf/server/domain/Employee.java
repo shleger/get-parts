@@ -96,7 +96,30 @@ public class Employee {
         this.displayName = displayName;
     }
 
-//    public static Employee findEmployee(Long id){
-//        return  new Employee();
-//    }
+    public static Employee findEmployee(Long id){
+        return  new Employee();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (!id.equals(employee.id)) return false;
+        if (!userName.equals(employee.userName)) return false;
+        if (!version.equals(employee.version)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userName.hashCode();
+        result = 31 * result + id.hashCode();
+        result = 31 * result + version.hashCode();
+        return result;
+    }
 }

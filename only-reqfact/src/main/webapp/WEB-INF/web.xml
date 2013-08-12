@@ -14,6 +14,8 @@
     <servlet>
         <servlet-name>requestFactoryServlet</servlet-name>
         <servlet-class>com.google.web.bindery.requestfactory.server.RequestFactoryServlet</servlet-class>
+        <!--<servlet-class>ru.saa.part.onlyrf.server.CustomRequestFactoryServlet</servlet-class>-->
+
         <init-param>
             <param-name>symbolMapsDirectory</param-name>
             <!-- You'll need to compile with -extras and move the symbolMaps directory

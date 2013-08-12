@@ -47,6 +47,12 @@ public class EmployeeDao {
     }
 
 
+    public void update(Employee employee) {
+
+        System.out.println("Employee saved: " + employee);
+
+
+    }
     public void persist() {
 
     }
