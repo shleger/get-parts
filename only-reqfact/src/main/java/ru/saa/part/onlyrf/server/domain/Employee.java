@@ -5,7 +5,7 @@ import com.sun.istack.internal.NotNull;
 import javax.persistence.*;
 
 @Entity
-public class Employee {
+public class Employee  extends DataStoreObject{
 
 //    @Size(min = 3, max = 30)    //todo enable validation
     private String userName;
@@ -19,15 +19,6 @@ public class Employee {
 
     @JoinColumn
     private Long supervisorKey;
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Version
-    @Column(name = "version")
-    private Integer version;
 
     @Transient
     private Employee supervisor;
@@ -60,6 +51,11 @@ public class Employee {
         return supervisorKey;
     }
 
+
+    public Employee getSupervisor() {
+        return supervisor;
+    }
+
     public void setSupervisorKey(Long supervisorKey) {
         this.supervisorKey = supervisorKey;
     }
@@ -68,21 +64,6 @@ public class Employee {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
-    public Employee getSupervisor() {
-        return supervisor;
-    }
 
     public void setSupervisor(Employee supervisor) {
         this.supervisor = supervisor;

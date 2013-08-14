@@ -13,26 +13,15 @@ public interface ExpensesRequestFactory extends RequestFactory {
     @Service(value = EmployeeDao.class, locator = MyServiceLocator.class)
     public interface EmployeeRequest extends RequestContext {
 
-//        Request<Long> countEmployees();
-//
-//        Request<Long> countEmployeesByDepartment(
-//                String department);
-
         Request<List<EmployeeProxy>> findAllEmployees();
 
         Request<EmployeeProxy> findEmployee(Long id);
 
-//        Request<List<EmployeeProxy>> findEmployeeEntries(int firstResult,
-//                                                         int maxResults);
-//
-//        Request<List<EmployeeProxy>> findEmployeeEntriesByDepartment(
-//                String department, int firstResult, int maxResults);
+        Request<Void> persist(EmployeeProxy employee);
 
-        InstanceRequest<EmployeeProxy, Void> persist();
+        Request<Void> remove(EmployeeProxy employee);
 
-        InstanceRequest<EmployeeProxy, Void> remove();
-
-        Request<Void> update(EmployeeProxy  employee) ;
+        Request<Void> update(EmployeeProxy employee);
 
     }
 
