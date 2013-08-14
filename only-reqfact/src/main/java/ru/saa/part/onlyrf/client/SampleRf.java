@@ -69,7 +69,8 @@ public class SampleRf implements EntryPoint {
         readFacButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent clickEvent) {
-                requestFactory.employeeRequest().findEmployee(1L).fire(new Receiver<EmployeeProxy>() {
+                Long id = textBox.getText() == null ? 1L :Long.valueOf(textBox.getText());
+                requestFactory.employeeRequest().findEmployee(id).fire(new Receiver<EmployeeProxy>() {
                     @Override
                     public void onSuccess(EmployeeProxy employeeProxy) {
                         Window.alert("Empl:" + employeeProxy.getUserName() + ", id=" + employeeProxy.getId());

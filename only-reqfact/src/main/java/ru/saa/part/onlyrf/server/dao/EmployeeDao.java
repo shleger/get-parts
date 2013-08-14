@@ -1,5 +1,7 @@
 package ru.saa.part.onlyrf.server.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.saa.part.onlyrf.server.domain.Employee;
 
 import java.util.ArrayList;
@@ -15,6 +17,8 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class EmployeeDao {
+
+    private static Logger log = LoggerFactory.getLogger(EmployeeDao.class.getSimpleName());
 
 
     static Map<Long, Employee> db = new LinkedHashMap<Long, Employee>();
@@ -43,25 +47,31 @@ public class EmployeeDao {
 
 
     public List<Employee> findAllEmployees() {
+        log.info("find all");
         return new ArrayList<Employee>(db.values());
     }
 
 
     public Employee findEmployee(Long id) {
-        return db.get(id);
+        Employee emp = db.get(id);
+        log.info("found: " + emp);
+        return emp;
     }
 
 
     public void update(Employee employee) {
+        log.info("update: " + employee);
+
         db.put(employee.getId(), employee);
     }
 
 
-    public void persist(Employee  employee) {
+    public void persist(Employee employee) {
+        log.info("persist: " + employee);
         db.put(employee.getId(), employee);
     }
 
-    public void remove(Employee  employee) {
+    public void remove(Employee employee) {
         db.remove(employee.getId());
     }
 }

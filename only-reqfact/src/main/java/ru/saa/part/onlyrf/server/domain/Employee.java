@@ -103,4 +103,19 @@ public class Employee  extends DataStoreObject{
         result = 31 * result + version.hashCode();
         return result;
     }
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                "version='" + version + '\'' +
+                "userName='" + userName + '\'' +
+                ", department='" + department + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", password='" + password + '\'' +
+                ", supervisorKey=" + supervisorKey +
+                ", supervisor=" + supervisor +
+                '}';
+    }
 }
